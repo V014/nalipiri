@@ -98,6 +98,10 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
+button:hover{
+    background-color: #37d45177;
+    color: #ffffff;
+}
 .social{
   margin-top: 30px;
   display: flex;

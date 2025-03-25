@@ -24,7 +24,8 @@
         <label for="password">Password</label>
         <input type="password" placeholder="Password" name="password">
 
-        <input type="submit" name="submit"></input>
+        <button type="submit" name="submit">Login</button>
+    
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
