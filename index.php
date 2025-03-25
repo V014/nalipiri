@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Glass</title>
-  
-
-</head>
 <body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <title>Glassmorphism login Form Tutorial in html css</title>
  
@@ -39,9 +30,5 @@
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div>
     </form>
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
