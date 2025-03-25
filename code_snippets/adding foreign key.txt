@@ -1,0 +1,6 @@
+CREATE TABLE billing (id INT AUTO_INCREMENT PRIMARY KEY,
+                      customer_id INT (10),
+                      water_usage VARCHAR (255),
+                      kWh_usage VARCHAR (255),
+                      date TIMESTAMP,
+                      FOREIGN KEY (customer_id) REFERENCES customer(id));
