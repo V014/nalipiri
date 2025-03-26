@@ -470,6 +470,7 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
                   <th>Electricity Bill</th>
                   <th>Total Amount</th>
                   <th>Date</th>
+				  <th>Day</th>
               </tr>
           </thead>
           <tbody>
@@ -481,6 +482,7 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
                       <td><?php echo 'MK' . $bill['kWh_usage'] * 150; ?></td>
                       <td><?php echo 'MK' . $bill['water_usage'] * 100 + $bill['kWh_usage'] * 150; ?></td>
                       <td><?php echo $bill['date']; ?></td>
+					  <td><?php echo $bill['day']; ?></td>
                   </tr>
               <?php } ?>
           </tbody>
