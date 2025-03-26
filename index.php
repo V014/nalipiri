@@ -2,7 +2,7 @@
 <html lang="en" >
 <body>
 <head>
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Nalipiri Eco Resort - Login</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -24,11 +24,12 @@
         <label for="password">Password</label>
         <input type="password" placeholder="Password" name="password">
 
-        <input type="submit" name="submit"></input>
-        <div class="social">
+        <button type="submit" name="submit">Login</button>
+    
+        <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div>
+        </div> -->
     </form>
 </body>
 </html>
