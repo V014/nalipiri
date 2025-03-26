@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #080710;
+    background-color: #f5f5fa;
 }
 .background{
     width: 430px;
@@ -40,7 +40,7 @@ body{
     bottom: -80px;
 }
 form{
-    height: 520px;
+    height: 460px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -55,7 +55,7 @@ form{
 }
 form *{
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: #080710;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -97,6 +97,10 @@ button{
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+button:hover{
+    background-color: #37d45177;
+    color: #ffffff;
 }
 .social{
   margin-top: 30px;
