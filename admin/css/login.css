@@ -5,24 +5,8 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-.home-link {
-    text-align: center;
-    padding-top: 10px;
-}
-
-a {
-    text-decoration: none;
-}
-
 body{
-    /* background-color: #f5f5fa; */
-    background-image: url('../img/banner.jpg');
-    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.5) 0%, rgba(92, 77, 66, 0.5) 100%), url("../img/banner.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-attachment: fixed;
+    background-color: #f5f5fa;
 }
 .background{
     width: 430px;
@@ -56,7 +40,7 @@ body{
     bottom: -80px;
 }
 form{
-    height: 480px;
+    height: 460px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;

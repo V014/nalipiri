@@ -2,7 +2,7 @@
 <html lang="en" >
 <body>
 <head>
-    <title>Nalipiri Eco Resort - Admin Login</title>
+    <title>Nalipiri Eco Resort - Login</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -25,7 +25,10 @@
         <input type="password" placeholder="Password" name="password">
 
         <button type="submit" name="submit">Login</button>
-    
+        <div class="home-link">
+            <a href="index.php">Exit</a>
+        </div>
+        
         <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
