@@ -29,7 +29,8 @@
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Booking</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                     </ul>
                 </div>
             </div>
