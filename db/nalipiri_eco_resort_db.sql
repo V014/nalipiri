@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2025 at 04:27 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Mar 27, 2025 at 04:59 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,9 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id` int(10) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `Date_Registered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `password` varchar(255) NOT NULL,
+  `date_registered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `date_registered`) VALUES
+(1, 'Void', '1234', '2025-03-25 18:35:45'),
+(2, 'Emmanuel', '1234', '2025-03-25 18:35:45');
 
 -- --------------------------------------------------------
 
@@ -45,21 +53,30 @@ CREATE TABLE `billing` (
   `customer_id` int(10) DEFAULT NULL,
   `water_usage` varchar(255) DEFAULT NULL,
   `kWh_usage` varchar(255) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `day` text NOT NULL DEFAULT 'monday'
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `billing`
 --
 
-INSERT INTO `billing` (`id`, `customer_id`, `water_usage`, `kWh_usage`, `date`, `day`) VALUES
-(1, 2, '30', '3', '2025-03-25 10:33:25', ''),
-(3, 3, '300', '60', '2025-03-25 14:54:16', ''),
-(4, 4, '500', '50', '2025-03-25 14:54:52', ''),
-(6, 4, '600', '20', '2025-03-25 15:01:51', ''),
-(8, 1, '50', '50', '2025-03-25 15:11:45', 'monday'),
-(9, 1, '50', '50', '2025-03-25 15:11:59', 'monday');
+INSERT INTO `billing` (`id`, `customer_id`, `water_usage`, `kWh_usage`, `date`) VALUES
+(1, 1, '30', '4', '2025-03-25 18:36:05'),
+(2, 2, '35', '8', '2025-03-25 18:36:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(10) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact` varchar(10) NOT NULL,
+  `transactions_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -68,10 +85,9 @@ INSERT INTO `billing` (`id`, `customer_id`, `water_usage`, `kWh_usage`, `date`, 
 --
 
 CREATE TABLE `customer` (
-  `id` int(3) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `id` int(10) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `room_number` varchar(10) NOT NULL,
   `date_registered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,11 +95,9 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `username`, `password`, `room_number`, `date_registered`) VALUES
-(1, 'Phyles pheleni', 'me2005', '3', '2025-03-25 09:13:39'),
-(2, 'Emmanuel', '1234', '4', '2025-03-25 09:13:39'),
-(3, 'Ernest Chinyanja', '2005', '5', '2025-03-25 14:58:57'),
-(4, 'wanga', '1234', '5', '2025-03-25 09:14:49');
+INSERT INTO `customer` (`id`, `username`, `password`, `date_registered`) VALUES
+(1, 'Void', '1234', '2025-03-25 18:35:19'),
+(2, 'Emmanuel', '1234', '2025-03-25 18:35:19');
 
 --
 -- Indexes for dumped tables
@@ -103,6 +117,12 @@ ALTER TABLE `billing`
   ADD KEY `customer_id` (`customer_id`);
 
 --
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -116,19 +136,25 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -138,7 +164,7 @@ ALTER TABLE `customer`
 -- Constraints for table `billing`
 --
 ALTER TABLE `billing`
-  ADD CONSTRAINT `billing_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`ID`);
+  ADD CONSTRAINT `billing_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
