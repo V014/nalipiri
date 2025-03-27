@@ -25,7 +25,10 @@
         <input type="password" placeholder="Password" name="password">
 
         <button type="submit" name="submit">Login</button>
-    
+        <div class="home-link">
+            <a href="index.php">Exit</a>
+        </div>
+        
         <!-- <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
