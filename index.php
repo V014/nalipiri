@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 mb-5">
-                            Book your stay today to enjoy the views of Mulanje at a personal level while cocooned luxury spaces and cuisines, no strings attached!
+                            Book your stay today to enjoy the views of Mulanje at a personal level with cocooned luxury spaces and cuisines, no strings attached!
                         </p>
                         <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
                     </div>
