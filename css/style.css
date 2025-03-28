@@ -346,9 +346,8 @@ body {
   fill: #2b3a60;
 }
 /* Table */
-table {
+/* table {
   width: 100%;
-  /* border-collapse: collapse; */
   margin-top: 20px;
   color: white;
 }
@@ -367,4 +366,4 @@ td {
 th, td {
   padding: 10px;
   text-align: left;
-}
+} */
