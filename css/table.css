@@ -4,10 +4,11 @@ table {
     background: white;
     border-radius: 6px;
     overflow: hidden;
-    max-width: 800px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     position: relative;
+    color: #3A3534;
   }
   table * {
     position: relative;
@@ -17,7 +18,7 @@ table {
   }
   table thead tr {
     height: 60px;
-    background: #FFED86;
+    background: #B58534;
     font-size: 16px;
   }
   table tbody tr {
