@@ -37,6 +37,7 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/table.css">
 
 </head>
 <body>
