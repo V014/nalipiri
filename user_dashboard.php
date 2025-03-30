@@ -21,10 +21,6 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     
     if ($stmt->rowCount() > 0) {
         $billing = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		//$waterBill = $billing['water_usage'] * 100; // Get the water bill amount
-		//$electricityBill = $billing['electricity_bill']; // Get the electricity bill amount
-		//$waterUsage = $billing['water_usage']; // Get the water usage amount
-		//$electricityUsage = $billing['kWh_usage']; // Get the electricity usage amount
     } else {
         echo "<script>alert('No data yet');</script>";
     }
@@ -120,19 +116,19 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 					</div>
 					
 					<div class="box-content">
-						<span class="big"><?php $waterBill = $billing['water_usage'] * 100; echo is_numeric($waterBill) ? number_format($waterBill, 2) : $waterBill; ?></span>
+						<span class="big"><?php foreach ($billing as $bill) { echo $bill['electric_bill']; } ?></span>
 						Electric Bill (MWK)
 					</div>
 				</div>
 				
 				<div class="info-box">
 					<div class="box-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 10H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1zm-1 10H5v-8h14v8zM5 6h14v2H5zM7 2h10v2H7z"/></svg>
+					<svg fill="#99a0b0" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 371.409 371.409" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M270.265,149.448c-36.107-47.124-70.38-78.948-73.439-141.372c0-1.836-0.612-3.06-1.836-4.284 c-0.612-3.06-3.672-4.896-6.732-3.06c-3.672,0-6.731,2.448-6.731,6.732c-77.112,83.232-207.468,294.372-43.452,354.959 c74.052,27.541,157.896-9.791,172.584-90.576C318.614,228.396,295.969,182.497,270.265,149.448z M138.686,323.256 c-17.748-10.404-28.764-31.211-34.272-49.572c-2.448-9.18-3.672-18.359-3.06-27.539c3.672-15.912,8.568-31.213,14.076-46.512 c3.06,13.463,9.18,26.928,17.748,36.719c19.584,21.422,59.364,34.273,70.38,61.201c6.732,16.523-19.584,30.6-30.6,34.271 C161.33,335.496,148.477,329.377,138.686,323.256z"></path> </g> </g></svg>
 					</div>
 					
 					<div class="box-content">
-						<span class="big">132</span>
-						Related articles
+						<span class="big"><?php foreach ($billing as $bill) { echo $bill['water_bill']; } ?></span>
+						Water Bill (MWK)
 					</div>
 				</div>
 				
@@ -170,39 +166,6 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 				</div>
 			</section>
 		</div>
-        <table>
-          <thead>
-              <tr>
-                  <th>Water Usage</th>
-                  <th>Electricity Usage</th>
-                  <th>Water Bill</th>
-                  <th>Electricity Bill</th>
-                  <th>Total Amount</th>
-                  <th>Date</th>
-				  <th>Day</th>
-              </tr>
-          </thead>
-          <tbody>
-              <?php foreach ($billing as $bill) { ?>
-                  <tr>
-                      <td><?php echo $bill['water_usage'] . 'L'; ?></td>
-                      <td><?php echo $bill['kWh_usage'] . 'kWh'; ?></td>
-                      <td><?php echo 'MK' . $bill['water_usage'] * 100; ?></td>
-                      <td><?php echo 'MK' . $bill['kWh_usage'] * 150; ?></td>
-                      <td><?php echo 'MK' . $bill['water_usage'] * 100 + $bill['kWh_usage'] * 150; ?></td>
-                      <td><?php echo $bill['date']; ?></td>
-					  <td><?php
-					  			$transaction_datetime = $bill['date'];
-								//Convert the datetime to a DateTime object
-								$date = new DateTime($transaction_datetime);
-								$day_of_week = $date->format('l');
-					  			echo $day_of_week; 
-							?>
-						</td>
-                  </tr>
-              <?php } ?>
-          </tbody>
-      </table>
 	</main>
 </div>
 <!-- partial -->
