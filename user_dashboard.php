@@ -12,8 +12,7 @@ if (!isset($_SESSION['logged'])) {
 
 if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 	$id = $_SESSION['customer_id']; // get customer_id from session
-	// Get billing data from the database
-    $stmt = $conn->prepare("SELECT * FROM billing WHERE customer_id = :customer_id");
+    $stmt = $conn->prepare("SELECT * FROM billing WHERE customer_id = :customer_id"); // Get billing data from the database
     $stmt->bindParam(':customer_id', $id);
     $stmt->execute();
 
@@ -34,23 +33,6 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 } else {
     echo "<script>alert('Illegal system entry');</script>";
 }
-
-// $dataPoints = array(
-// 	array("x"=> 10, "y"=> 41),
-// 	array("x"=> 20, "y"=> 35, "indexLabel"=> "Lowest"),
-// 	array("x"=> 30, "y"=> 50),
-// 	array("x"=> 40, "y"=> 45),
-// 	array("x"=> 50, "y"=> 52),
-// 	array("x"=> 60, "y"=> 68),
-// 	array("x"=> 70, "y"=> 38),
-// 	array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
-// 	array("x"=> 90, "y"=> 52),
-// 	array("x"=> 100, "y"=> 60),
-// 	array("x"=> 110, "y"=> 36),
-// 	array("x"=> 120, "y"=> 49),
-// 	array("x"=> 130, "y"=> 41)
-// );
-
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -162,7 +144,7 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 					
 					<div class="box-content">
 						<span class="big">18</span>
-						Key executives
+						People in room
 					</div>
 				</div>
 				
