@@ -23,11 +23,10 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     if ($stmt->rowCount() > 0) {
         $billing = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
-        echo "<script>alert('No data yet');</script>";
-		echo json_encode(["waterUsage" => 0, "electricUsage" => 0]); // Default value
+        // code here...
     }
 } else {
-    echo "<script>alert('User ID is not set');</script>";
+    echo "<script>alert('Illegal system entry');</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +36,6 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/table.css">
 
@@ -160,13 +158,10 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 			<section class="charts">
 				<div class="chart">
 					<h3>Water and Electric Usage</h3>
-					<!-- <canvas id="waterUsageChart"></canvas> -->
-					<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+					<canvas id="myChart" style="width:100%;max-width:700px">
+
+					</canvas>
 				</div>
-				<!-- <div class="chart">
-					<h3>Electricity Usage</h3>
-					<canvas id="electricityUsageChart"></canvas>
-				</div> -->
 			</section>
 		</div>
 	</main>
