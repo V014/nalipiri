@@ -1,6 +1,7 @@
 <?php
 session_start(); // start session to access save data
 require 'php/database.php'; // connect to db to get data
+// header('Content-Type: application/json');
 
 // check if the user logged in properly
 if (!isset($_SESSION['logged'])) {
@@ -18,13 +19,13 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     $stmt = $conn->prepare("SELECT * FROM billing WHERE customer_id = :customer_id");
     $stmt->bindParam(':customer_id', $id);
     $stmt->execute();
-    
+
     if ($stmt->rowCount() > 0) {
         $billing = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
         echo "<script>alert('No data yet');</script>";
+		echo json_encode(["waterUsage" => 0, "electricUsage" => 0]); // Default value
     }
-
 } else {
     echo "<script>alert('User ID is not set');</script>";
 }
@@ -36,6 +37,7 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/table.css">
 
@@ -157,13 +159,14 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 		
 			<section class="charts">
 				<div class="chart">
-					<h3>Water Usage</h3>
-					<canvas id="waterUsageChart"></canvas>
+					<h3>Water and Electric Usage</h3>
+					<!-- <canvas id="waterUsageChart"></canvas> -->
+					<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
 				</div>
-				<div class="chart">
+				<!-- <div class="chart">
 					<h3>Electricity Usage</h3>
 					<canvas id="electricityUsageChart"></canvas>
-				</div>
+				</div> -->
 			</section>
 		</div>
 	</main>
