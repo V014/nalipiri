@@ -10,40 +10,46 @@ if (!isset($_SESSION['logged'])) {
     exit;
 }
 
-// get customer_id
-$id = $_SESSION['customer_id'];
-
-
 if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
-    // Get billing data from the database
+	$id = $_SESSION['customer_id']; // get customer_id from session
+	// Get billing data from the database
     $stmt = $conn->prepare("SELECT * FROM billing WHERE customer_id = :customer_id");
     $stmt->bindParam(':customer_id', $id);
     $stmt->execute();
 
-    if ($stmt->rowCount() > 0) {
-        $billing = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$billing = $stmt->fetchAll(PDO::FETCH_ASSOC); // fetch all billing data for the customer
+	$dataPoints = []; // initialize dataPoints array for chart data
+
+	// check if the billing data is not empty
+    if (!empty($billing)) {
+		// loop through the billing data and add it to the dataPoints array		
+		$count = 0;
+		foreach ($billing as $bill) {
+            $dataPoints[] = ["label" => "Water Bill", "y" => (float)$bill["water_bill"]];
+            $dataPoints[] = ["label" => "Electric Bill", "y" => (float)$bill["electric_bill"]];
+        }
     } else {
-        // code here...
+        // code here incase of no billing data...
     }
 } else {
     echo "<script>alert('Illegal system entry');</script>";
 }
 
-$dataPoints = array(
-	array("x"=> 10, "y"=> 41),
-	array("x"=> 20, "y"=> 35, "indexLabel"=> "Lowest"),
-	array("x"=> 30, "y"=> 50),
-	array("x"=> 40, "y"=> 45),
-	array("x"=> 50, "y"=> 52),
-	array("x"=> 60, "y"=> 68),
-	array("x"=> 70, "y"=> 38),
-	array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
-	array("x"=> 90, "y"=> 52),
-	array("x"=> 100, "y"=> 60),
-	array("x"=> 110, "y"=> 36),
-	array("x"=> 120, "y"=> 49),
-	array("x"=> 130, "y"=> 41)
-);
+// $dataPoints = array(
+// 	array("x"=> 10, "y"=> 41),
+// 	array("x"=> 20, "y"=> 35, "indexLabel"=> "Lowest"),
+// 	array("x"=> 30, "y"=> 50),
+// 	array("x"=> 40, "y"=> 45),
+// 	array("x"=> 50, "y"=> 52),
+// 	array("x"=> 60, "y"=> 68),
+// 	array("x"=> 70, "y"=> 38),
+// 	array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
+// 	array("x"=> 90, "y"=> 52),
+// 	array("x"=> 100, "y"=> 60),
+// 	array("x"=> 110, "y"=> 36),
+// 	array("x"=> 120, "y"=> 49),
+// 	array("x"=> 130, "y"=> 41)
+// );
 
 ?>
 <!DOCTYPE html>
@@ -183,9 +189,9 @@ $dataPoints = array(
 								animationEnabled: true,
 								exportEnabled: true,
 								theme: "light1", // "light1", "light2", "dark1", "dark2"
-								title:{
-									text: "Simple Column Chart with Index Labels"
-								},
+								// title:{
+								// 	text: "Billing Data"
+								// },
 								axisY:{
 									includeZero: true
 								},
