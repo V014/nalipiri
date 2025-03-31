@@ -28,6 +28,23 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 } else {
     echo "<script>alert('Illegal system entry');</script>";
 }
+
+$dataPoints = array(
+	array("x"=> 10, "y"=> 41),
+	array("x"=> 20, "y"=> 35, "indexLabel"=> "Lowest"),
+	array("x"=> 30, "y"=> 50),
+	array("x"=> 40, "y"=> 45),
+	array("x"=> 50, "y"=> 52),
+	array("x"=> 60, "y"=> 68),
+	array("x"=> 70, "y"=> 38),
+	array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
+	array("x"=> 90, "y"=> 52),
+	array("x"=> 100, "y"=> 60),
+	array("x"=> 110, "y"=> 36),
+	array("x"=> 120, "y"=> 49),
+	array("x"=> 130, "y"=> 41)
+);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -36,8 +53,8 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+	
     <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/table.css">
 
 </head>
 <body>
@@ -158,8 +175,33 @@ if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 			<section class="charts">
 				<div class="chart">
 					<h3>Water and Electric Usage</h3>
-					<canvas id="myChart" style="width:100%;max-width:700px">
-
+					<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+						<script>
+							window.onload = function () {
+							
+							var chart = new CanvasJS.Chart("chartContainer", {
+								animationEnabled: true,
+								exportEnabled: true,
+								theme: "light1", // "light1", "light2", "dark1", "dark2"
+								title:{
+									text: "Simple Column Chart with Index Labels"
+								},
+								axisY:{
+									includeZero: true
+								},
+								data: [{
+									type: "column", //change type to bar, line, area, pie, etc
+									//indexLabel: "{y}", //Shows y value on all Data Points
+									indexLabelFontColor: "#5A5757",
+									indexLabelPlacement: "outside",   
+									dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+								}]
+							});
+							chart.render();
+							
+							}
+						</script>
+						<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 					</canvas>
 				</div>
 			</section>
