@@ -7,13 +7,12 @@ class Dbh {
 
     protected function connect() {
         try {
+            $dsn = 'mysql:host=' . $this->host . ';database=' . $this->database;
             // Creating a new PDO instance
-            $conn = new PDO("mysql:host=$this->host;dbname=$this->database;charset=utf8", $this->username, $this->password);
-            
+            $pdo = new PDO($dsn, $this->username, $this->password);
             // Setting the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            // echo "Connected successfully!";
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;
         } catch (PDOException $e) {
             // Display error message if the connection fails
             echo "Connection failed: " . $e->getMessage();
