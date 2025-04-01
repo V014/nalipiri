@@ -1,7 +1,6 @@
 <?php
 session_start(); // start session to access save data
-require 'php/database.php'; // connect to db to get data
-// header('Content-Type: application/json');
+include 'includes/autoLoader.inc.php';
 
 // check if the user logged in properly
 if (!isset($_SESSION['logged'])) {
@@ -9,6 +8,8 @@ if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
     exit;
 }
+
+require 'php/database.php'; // connect to db to get data
 
 if (isset($_SESSION['customer_id']) && !empty($_SESSION['customer_id'])) {
 	$id = $_SESSION['customer_id']; // get customer_id from session
