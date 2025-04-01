@@ -1,6 +1,15 @@
 <?php
 session_start();
-include 'database.php';
+include '../classes/database.class.php';
+
+class Login extends Dbh {
+
+    protected function authenticate($username, $password){
+        $sql = "SELECT * FROM customer WHERE username = ? AND password = ?"; // create a query with a temporary query condition
+        $stmt = $this->connect()->prepare($sql); // prepare the statement to run sql before adding user data to prevent breach
+        $stmt->execute([$username, $password]); // execute the statement
+    }
+}
 
 // Handle login form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

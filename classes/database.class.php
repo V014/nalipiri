@@ -7,7 +7,7 @@ class Dbh {
 
     protected function connect() {
         try {
-            $dsn = 'mysql:host=' . $this->host . ';database=' . $this->database;
+            $dsn = 'mysqli:host=' . $this->host . ';database=' . $this->database;
             // Creating a new PDO instance
             $pdo = new PDO($dsn, $this->username, $this->password);
             // Setting PDO Fetch method
