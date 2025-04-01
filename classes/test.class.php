@@ -2,7 +2,7 @@
 
 class Test extends Dbh{
 
-    public function getCustomers(){
+    public function getCustomer(){
         $sql = "SELECT * FROM customer";
         $stmt = $this->connect()->query($sql);
         while($row = $stmt->fetch()) {
@@ -10,7 +10,7 @@ class Test extends Dbh{
         }
     }
 
-    public function getCustomersStmt($user_id){
+    public function getCustomerStmt($user_id){
         $sql = "SELECT * FROM customer WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$user_id]);
@@ -21,7 +21,7 @@ class Test extends Dbh{
         }
     }
 
-    public function setCustomersStmt($username, $password, $people){
+    public function setCustomerStmt($username, $password, $people){
         $sql = "INSERT INTO customer(username, password, people) VALUES (?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$username, $password, $people]);
