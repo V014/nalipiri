@@ -23,7 +23,8 @@ class Test extends Dbh{
 
     public function setCustomersStmt($username, $password, $people){
         $sql = "INSERT INTO customer(username, password, people) VALUES (?, ?, ?)";
-        
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$username, $password, $people]);
     }
 
 }

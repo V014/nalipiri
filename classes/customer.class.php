@@ -1,5 +1,5 @@
 <?php
-class customer extends Dbh {
+class Customer extends Dbh {
     public function getUsers(){
 
     }
