@@ -1,26 +1,26 @@
 <?php
 class LoginController extends Login {
 
-    private $user_id;
+    private $username;
     private $password;
 
-    public function __construct($user_id, $password) {
-        $this->user_id = $user_id;
+    public function __construct($user_id, $password) { // create constructor that holds expected values from customer
+        $this->username = $user_id;
         $this->password = $password;
     }
     
     public function loginUser() {
-        if($this->emptyInput() == false) {
+        if($this->emptyInput() == false) { // send customer back to login page if data is missing
             header("location: ../login.php?error=emptyinput");
             exit();
         }
 
-        $this->getCustomer($this->user_id, $this->password);
+        $this->getCustomer($this->username, $this->password); // push data to the login model
     }
 
-    private function emptyInput() {
-        $result = 0;
-        if(empty($this->user_id )|| empty($this->password)) {
+    private function emptyInput() { //  check to see if data is missing
+        $result = null;
+        if(empty($this->username )|| empty($this->password)) {
             $result = false;
         } else {
             $result = true;
