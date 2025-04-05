@@ -1,12 +1,12 @@
 <?php
 
 class Login extends Dbh {
-    protected function getCustomer($username, $password) { // create function that requires two parameters to query
-        $stmt = $this->connect()->prepare('SELECT id FROM customer WHERE username = ? AND password = ?'); // prepare the sql statement
+    protected function getAdmin($username, $password) { // create function that requires two parameters to query
+        $stmt = $this->connect()->prepare('SELECT id FROM admin WHERE username = ? AND password = ?'); // prepare the sql statement
 
         if(!$stmt->execute(array($username, $password))) { // execute the statement and if the process fails
             $stmt = null; // empty the query statement to not have residual data
-            header('locationL ../login.php?error=stmtfailed'); // navigate back to login page
+            header('locationL ../index.php?error=stmtfailed'); // navigate back to login page
             exit(); // close the if statement
         }
 

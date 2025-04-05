@@ -4,8 +4,8 @@ class LoginController extends Login {
     private $username;
     private $password;
 
-    public function __construct($user_id, $password) { // create constructor that holds expected values from customer
-        $this->username = $user_id;
+    public function __construct($username, $password) { // create constructor that holds expected values from customer
+        $this->username = $username;
         $this->password = $password;
     }
     
@@ -15,7 +15,7 @@ class LoginController extends Login {
             exit();
         }
 
-        $this->getCustomer($this->username, $this->password); // push data to the login model
+        $this->getAdmin($this->username, $this->password); // push data to the login model
     }
 
     private function emptyInput() { //  check to see if data is missing
