@@ -32,9 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['customer_id'] = $customer_id;
         header("Location: ../user_dashboard.php"); // Redirect to dashboard page
     } else {
-        echo "<script>alert('Invalid login credentials');</script>";
+        header("Location: ../login.php"); // Redirect to dashboard page
+        echo "<script>alert('Invalid login credentials');</script>"; // tell the user what happened
     }
 } else {
-    echo "you failed to hack us";
+    header("Location: ../login.php"); // Redirect to dashboard page
+    echo "<script>alert('Illegal entry');</script>"; // tell the user what happened
 }
 ?>
