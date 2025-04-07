@@ -11,7 +11,7 @@ class LoginController extends Login {
     
     public function loginUser() {
         if($this->emptyInput() == false) { // send customer back to login page if data is missing
-            header("location: ../login.php?error=emptyinput");
+            header("location: ../login.php?error=empty_input");
             exit();
         }
 

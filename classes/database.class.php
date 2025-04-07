@@ -37,7 +37,7 @@ class Dbh {
             }
     
             // Create admin entry
-            $connection = getConnection();
+            $connection = $this->getConnection();
             $username = "admin";
             $password = password_hash("secret1234", PASSWORD_DEFAULT);
             $role = "admin";
@@ -60,8 +60,8 @@ class Dbh {
         static $dbh = null;
 
         try {
-            if (!isSetUp()) {
-                initDB();
+            if (!$this->isSetUp()) {
+                $this->initDB();
             }
 
             if ($dbh === null) {

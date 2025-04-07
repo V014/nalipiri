@@ -6,7 +6,7 @@ class Login extends Dbh {
 
     protected function getCustomer($username, $password){
         $sql = "SELECT * FROM customer WHERE username = ? AND password = ?"; // create a query with a temporary query condition
-        $stmt = $this->connect()->prepare($sql); // prepare the statement to run sql before adding user data to prevent breach
+        $stmt = $this->getConnection()->prepare($sql); // prepare the statement to run sql before adding user data to prevent breach
         $stmt->execute([$username, $password]); // execute the statement
     }
 }
