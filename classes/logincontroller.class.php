@@ -1,31 +1,26 @@
 <?php
 class LoginController extends Login {
 
-    private $username;
-    private $password;
+    private $loginModel;
 
-    public function __construct($user_id, $password) { // create constructor that holds expected values from customer
-        $this->username = $user_id;
-        $this->password = $password;
+    public function __construct() { // create constructor that holds expected values from customer
+        $this->loginModel = new Login();
     }
     
-    public function loginUser() {
-        if($this->emptyInput() == false) { // send customer back to login page if data is missing
-            header("location: ../login.php?error=empty_input");
+    public function loginUser($username, $password) {
+        if(empty($username) || empty($password)) {
+            return "Username and password are required";
+        }
+
+        $user = $this->loginModel->getUser($username);
+        if($user && password_verify($password, $user['password'])) {
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            header("location: ../user_dashboard.php");
             exit();
-        }
-
-        $this->getCustomer($this->username, $this->password); // push data to the login model
-    }
-
-    private function emptyInput() { //  check to see if data is missing
-        $result = null;
-        if(empty($this->username )|| empty($this->password)) {
-            $result = false;
         } else {
-            $result = true;
+            return "invalid credentials";
         }
-        return $result;
     }
 }
 ?>
