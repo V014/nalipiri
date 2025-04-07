@@ -15,7 +15,7 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="php/login.php" method="POST">
+    <form action="includes/login.inc.php" method="POST">
         <h3>Login Here</h3>
 
         <label for="username">Username</label>

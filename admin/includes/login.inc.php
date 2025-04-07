@@ -13,7 +13,7 @@ if(!isset($_POST['submit'])) {
     $login->loginUser();
 
     // Check if the user is logged in
-    if(isset($_SESSION['user_id'])) {
+    if(isset($_SESSION['admin_id'])) {
         // Redirect to the dashboard
         header("Location: ../admin_dashboard.php");
         exit();
