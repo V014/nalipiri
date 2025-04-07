@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2025 at 04:07 PM
+-- Generation Time: Apr 07, 2025 at 04:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,8 +45,8 @@ CREATE TABLE `billing` (
 --
 
 INSERT INTO `billing` (`id`, `customer_id`, `water_usage`, `kWh_usage`, `date`, `water_bill`, `electric_bill`, `total_bill`, `room`, `occupants`) VALUES
-(1, 1, '30', '4', '2025-03-30 22:41:28', 3000, 600, 3600, 0, 0),
-(2, 2, '35', '8', '2025-03-30 22:13:23', 3500, 1200, 4700, 0, 0);
+(1, 1, '30', '4', '2025-04-07 14:38:32', 3000, 600, 3600, 1, 2),
+(2, 2, '35', '8', '2025-04-07 14:38:32', 3500, 1200, 4700, 2, 3);
 
 --
 -- Triggers `billing`
@@ -130,9 +130,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`, `date_registered`) VALUES
 (1, 'Wanga', '1234', 'customer', '2025-04-07 14:05:30'),
-(2, 'Emmanuel', '1234', 'customer', '2025-04-07 14:05:16'),
-(3, 'void', '1234', 'admin', '2025-04-07 14:06:27'),
-(4, 'manze', '1234', 'admin', '2025-04-07 14:06:42');
+(2, 'Emmanuel', '1234', 'customer', '2025-04-07 14:05:16');
 
 --
 -- Indexes for dumped tables
@@ -178,7 +176,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
