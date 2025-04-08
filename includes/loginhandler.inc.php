@@ -1,5 +1,5 @@
 <?php
-
+// handler file collects and sanitizes user data before passing it on to the controller
 class LoginHandler extends LoginController {
 
     public function handler() {

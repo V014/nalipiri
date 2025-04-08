@@ -40,7 +40,7 @@ class Dbh {
             $connection = $this->getConnection();
             $username = "admin";
             $password = password_hash("secret1234", PASSWORD_DEFAULT);
-            $role = "admin";
+            $role = "administrative";
     
             $sql = "INSERT INTO user (username, password, role) VALUES (:username, :password, :role)";
             $sth = $connection->prepare($sql);
