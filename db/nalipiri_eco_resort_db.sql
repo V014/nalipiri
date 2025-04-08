@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2025 at 04:38 PM
+-- Generation Time: Apr 08, 2025 at 08:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,14 +39,6 @@ CREATE TABLE `billing` (
   `room` int(3) NOT NULL,
   `occupants` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `billing`
---
-
-INSERT INTO `billing` (`id`, `customer_id`, `water_usage`, `kWh_usage`, `date`, `water_bill`, `electric_bill`, `total_bill`, `room`, `occupants`) VALUES
-(1, 1, '30', '4', '2025-04-07 14:38:32', 3000, 600, 3600, 1, 2),
-(2, 2, '35', '8', '2025-04-07 14:38:32', 3500, 1200, 4700, 2, 3);
 
 --
 -- Triggers `billing`
@@ -102,14 +94,6 @@ CREATE TABLE `message` (
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`id`, `customer_id`, `message`, `status`, `date`) VALUES
-(1, 1, 'Welcome to Nalipiri Eco Resort, This is our user dashboard meant to display more about the usage of water and electricity and other services. To promote transparency to our customers and enable a flexible budget so that each customer is charged fairly.', 'unread', '2025-03-31 16:55:20'),
-(2, 2, 'Welcome to Nalipiri Eco Resort, This is our user dashboard meant to display more about the usage of water and electricity and other services. To promote transparency to our customers and enable a flexible budget so that each customer is charged fairly.', 'unread', '2025-03-31 16:55:20');
-
 -- --------------------------------------------------------
 
 --
@@ -123,14 +107,6 @@ CREATE TABLE `user` (
   `role` varchar(255) NOT NULL,
   `date_registered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`, `role`, `date_registered`) VALUES
-(1, 'Wanga', '1234', 'customer', '2025-04-07 14:05:30'),
-(2, 'Emmanuel', '1234', 'customer', '2025-04-07 14:05:16');
 
 --
 -- Indexes for dumped tables
@@ -164,19 +140,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `billing`
 --
 ALTER TABLE `billing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
