@@ -16,6 +16,13 @@
         <div class="shape"></div>
     </div>
     <form action="includes/login_handler.inc.php" method="POST">
+        <!-- Check if there are any errors -->
+        <?php if (isset($_COOKIE["errors"])) {
+            $error = $_COOKIE["errors"];
+            deleteCookie("errors");
+        ?>
+        <p style="color: red; text-align: center;"><?= $error; ?></p>
+        <?php } ?>
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
