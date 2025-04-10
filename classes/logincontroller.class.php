@@ -1,6 +1,9 @@
 <?php
-include '../includes/utils.inc.php'; // include utils file for extra function
-class LoginController extends Login {
+session_start(); // start session to hold values
+require_once 'login.class.php'; // include login class
+
+class LoginController { // create class for login controller
+    // create properties for login controller
 
     private $loginModel;
 
@@ -9,16 +12,14 @@ class LoginController extends Login {
     }
     
     public function loginUser($username, $password) {
-        if(empty($username) || empty($password)) {
-            return "Username and password are required";
-            setcookie("errors", "Username and password are required"); // set cookie for error message
+        if(empty($username) || empty($password)) { // check if username and password are empty
+            $_SESSION['error'] = "Username and password are required"; // set session for error message
             header("location: ../login.php"); // send to login page
         }
         
         $user = $this->loginModel->getUser($username, $password); // push values to login model
         if(!$user) {
-            return "User not found";
-            setcookie("errors", "Incorrect Username/Password"); // set cookie for error message
+            $_SESSION['error'] = "Incorrect Username/Password"; // set session for error message
             header("location: ../login.php"); // send to login page
         }
         // Check if the password matches the hashed password in the database
@@ -36,10 +37,9 @@ class LoginController extends Login {
                 header("location: ../index.php"); // send to homepage
             }
 
-            session_start();
-            
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $username;
+            unset($_SESSION['error']); // Clear any previous errors
             exit();
 
         } else {

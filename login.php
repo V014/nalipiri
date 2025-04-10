@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" >
 <body>
@@ -17,9 +20,9 @@
     </div>
     <form action="includes/login_handler.inc.php" method="POST">
         <!-- Check if there are any errors -->
-        <?php if (isset($_COOKIE["errors"])) {
-            $error = $_COOKIE["errors"];
-            deleteCookie("errors");
+        <?php if (isset($_SESSION["error"])) {
+            $error = $_session["error"];
+            unset($_SESSION['error']); // Clear any previous errors
         ?>
         <p style="color: red; text-align: center;"><?= $error; ?></p>
         <?php } ?>
