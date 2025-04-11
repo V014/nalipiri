@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -18,14 +21,12 @@ session_start();
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="includes/login_handler.inc.php" method="POST">
+    <form action="includes/loginhandler.inc.php" method="POST">
         <!-- Check if there are any errors -->
-        <?php if (isset($_SESSION["error"])) {
-            $error = $_session["error"];
-            unset($_SESSION['error']); // Clear any previous errors
+        <?php if (isset($error)) {
+            echo "<p style='color: red;'>" . $error . "</p>";
         ?>
-        <p style="color: red; text-align: center;"><?= $error; ?></p>
-        <?php } ?>
+        <?php } else { $error = null; } ?>
         <h3>Login Here</h3>
 
         <label for="username">Username</label>

@@ -1,7 +1,7 @@
 <?php
-require_once '../classes/database.class.php'; // include database connection class
-class Login { // create class for login
-    // create properties for login class{ 
+require_once 'database.class.php'; // include database connection class
+class Login {
+    // create properties for login class
     private $db;
 
     protected function __construct()
